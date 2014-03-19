@@ -5,46 +5,58 @@ describe "Pages" do
   describe "Home page" do
 
     it "should have the content 'Earthquake App'" do
-      visit '/pages/home'
+      visit root_path
       expect(page).to have_content('Earthquake App')
     end
- it "should have the right title" do
-  visit '/pages/home'
-  expect(page).to have_title("Earthquake App | Home")
-end
-  end
+    it "should have the base title" do
+    visit root_path
+    expect(page).to have_title("Earthquake App")
+    end
+    it "should not have a custom page title" do
+     visit root_path
+     expect(page).not_to have_title('| Home')
+    end
+ end
 
  describe "About page" do
 
     it "should have the content 'About Us'" do
-      visit '/pages/about'
+      visit about_path
       expect(page).to have_content('About Us')
     end
  it "should have the right title" do
-  visit '/pages/about'
-  expect(page).to have_title("Earthquake App | About Us")
+  visit about_path
+  expect(page).to have_title("Earthquake App")
 end
+it "should not have a custom page title" do
+     visit about_path
+     expect(page).not_to have_title('| About Us')
+    end
   end
 
 describe "Login page" do
 
     it "should have the content 'Login'" do
-      visit '/pages/login'
+      visit login_path
       expect(page).to have_content('Login')
     end
    it "should have the right title" do
-  visit '/pages/login'
-  expect(page).to have_title("Earthquake App | Login")
+  visit login_path
+  expect(page).to have_title("Earthquake App")
 end
+it "should not have a custom page title" do
+     visit login_path
+     expect(page).not_to have_title('| Login')
+    end
   end
 describe "News page" do
 
     it "should have the content 'News'" do
-      visit '/pages/news'
+      visit news_path
       expect(page).to have_content('News')
     end
     it "should have the right title" do
-  visit '/pages/news'
+  visit news_path
   expect(page).to have_title("Earthquake App | News")
 end
     

@@ -1,11 +1,12 @@
 Earth::Application.routes.draw do
-	resources :users
-	 match '/signup',  to: 'users#new',            via: 'get'
+  root  'pages#home'
+  resources :users
+  match '/signup',  to: 'users#new',  via: 'get'
   get "users/new"
-  get "pages/home"
-  get "pages/about"
-  get "pages/login"
-  get "pages/news"
+  
+  match '/news',    to: 'pages#news',    via: 'get'
+  match '/about',   to: 'pages#about',   via: 'get'
+  match '/login',   to: 'pages#login',   via: 'get'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
