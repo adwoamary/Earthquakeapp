@@ -1,4 +1,7 @@
 Earth::Application.routes.draw do
+	resources :users
+	 match '/signup',  to: 'users#new',            via: 'get'
+  get "users/new"
   get "pages/home"
   get "pages/about"
   get "pages/login"
