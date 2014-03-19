@@ -3,10 +3,12 @@ ruby '2.1.1'
 #ruby-gemset=railstutorial_rails_4_0
 
 gem 'rails', '4.0.3'
-
+gem 'bcrypt-ruby', '3.1.2'
+gem 'bootstrap-sass', '2.3.2.0'
 group :development, :test do
-  gem 'sqlite3', '1.3.8'
+gem 'sqlite3', '1.3.8'
   gem 'rspec-rails', '2.13.1'
+  gem 'factory_girl_rails', '4.2.1'
 end
 
 group :test do
