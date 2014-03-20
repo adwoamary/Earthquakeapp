@@ -2,6 +2,7 @@ Earth::Application.routes.draw do
 #<<<<<<< HEAD
 #=======
   root  'pages#home'
+   resources :pages
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   match '/signup',  to: 'users#new',            via: 'get'

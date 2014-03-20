@@ -1,0 +1,11 @@
+<div class='unit one-of-two' data-no-turbolink>
+	<% @stations.each do |s| %>
+	<p>Trading Name: <%= link_to "#{s.trading_name}", page_path(s.id) %><br />
+	Address1: <%= s.adress1 %><br />
+	Address2<%= s.adress2 %><br />
+	Address3<%= s.adress3 %>
+	City<%= s.city %>
+	Post Code<%= s.post_code %>
+	Telephone<%= s.telephone %></p>
+	<% end %>
+</div>

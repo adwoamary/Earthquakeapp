@@ -5,6 +5,9 @@ def log_in(user)
     user.update_attribute(:remember_token, User.hash(remember_token))
     self.current_user = user
   end
+  def logged_in?
+    !current_user.nil?
+  end
   def current_user=(user)
     @current_user = user
   end
@@ -12,7 +15,7 @@ def log_in(user)
     remember_token = User.hash(cookies[:remember_token])
     @current_user ||= User.find_by(remember_token: remember_token)
   end
-  def sign_out
+  def log_out
     current_user.update_attribute(:remember_token,
                                   User.hash(User.new_remember_token))
     cookies.delete(:remember_token)

@@ -9,11 +9,11 @@
     </section>
   </aside>
 </div>
-<h1>Welcome <%= @user.name%> </h1>
+<h1>Welcome <%= @user.name%> <ul class="nav pull-right"><li> <%= link_to "Log out", logout_path, method: "delete" %></li><li><%= link_to "Profile", current_user %></li></ul> </h1>
 
 <p>Click to view Approved  Vehicle Testing Companies in the UK.<br />
 <p> Search by<br />
-<li><%= link_to "City", '#' %></li>
+<li><%= link_to "City", pages_path %></li>
 <li><%= link_to "Post Code", '#' %></li>
 <br>
 <p> Search by map<br />
