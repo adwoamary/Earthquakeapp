@@ -7,6 +7,7 @@ class PagesController < ApplicationController
 
   def login
   end
-  def news
+  def index
+	  @stations = Station.all
   end
 end

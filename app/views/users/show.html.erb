@@ -3,9 +3,36 @@
   <aside class="span4">
     <section>
       <h1>
-        <%= gravatar_for @user %>
+        
         <%= @user.name %>
       </h1>
     </section>
   </aside>
 </div>
+<h1>Welcome <%= @user.name%> <ul class="nav pull-right"><li> <%= link_to "Log out", logout_path, method: "delete" %></li><li><%= link_to "Profile", current_user %></li></ul> </h1>
+
+<p>Click to view Approved  Vehicle Testing Companies in the UK.<br />
+<p> Search by<br />
+<li><%= link_to "City", pages_path %></li>
+<li><%= link_to "Post Code", '#' %></li>
+<br>
+<p> Search by map<br />
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false">
+</script>
+
+<script>
+function initialize()
+{
+var mapProp = {
+  center:new google.maps.LatLng(51.508742,-0.120850),
+  zoom:5,
+  mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+var map=new google.maps.Map(document.getElementById("googleMap")
+  ,mapProp);
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+<div id="googleMap" style="width:500px;height:380px;"></div>
+</p>
