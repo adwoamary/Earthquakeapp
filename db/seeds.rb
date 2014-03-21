@@ -6,10 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Station.delete_all
-open("config/MOTsitelist1") do |stations|
-  stations.read.each_line do |station|
-   site_number, trading_name, adress1, adress2, adress3, city, post_code, telephone, = station.split
-Station.create!(:trading_name => trading_name, :adress1 => adress1, :adress2 => adress2, :adress3 => adress3, :city => city, :post_code => post_code, :telephone => telephone)
-    end
-end
+Earthquake.delete_all
+open("config/query(2)") do |earthquakes|
+  earthquakes.read.each_line do |earthquake|
+    time, latitude, longtitude, depth, gap, dmin, updated, place = earthquake.chomp.split(",")
+    Earthquake.create!(:time => time, :latitude => latitude, :longtitude => longtitude, :depth => depth, :gap => gap, :dmin => dmin, :updated => updated, :place => place)
+  end
+  end

@@ -14,3 +14,15 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function() {
+  var map;
+  var infowindow;
+  
+  function initialize() {
+    var location = new google.maps.LatLng(gon.latitude,gon.longitude);
+    map = new google.maps.Map(document.getElementById("map_canvas"), {
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      center: location,
+      zoom: 12
+    });

@@ -11,16 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140319223927) do
+ActiveRecord::Schema.define(version: 20140320223151) do
 
-  create_table "stations", force: true do |t|
-    t.text     "trading_name"
-    t.text     "adress1"
-    t.text     "adress2"
-    t.string   "adress3"
-    t.string   "city"
-    t.text     "post_code"
-    t.text     "telephone"
+  create_table "earthquakes", force: true do |t|
+    t.text     "time"
+    t.decimal  "latitude"
+    t.decimal  "longtitude"
+    t.decimal  "depth"
+    t.decimal  "gap"
+    t.decimal  "dmin"
+    t.text     "updated"
+    t.text     "place"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

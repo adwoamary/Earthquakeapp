@@ -11,28 +11,47 @@
 </div>
 <h1>Welcome <%= @user.name%> <ul class="nav pull-right"><li> <%= link_to "Log out", logout_path, method: "delete" %></li><li><%= link_to "Profile", current_user %></li></ul> </h1>
 
-<p>Click to view Approved  Vehicle Testing Companies in the UK.<br />
-<p> Search by<br />
-<li><%= link_to "City", pages_path %></li>
-<li><%= link_to "Post Code", '#' %></li>
-<br>
-<p> Search by map<br />
-<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false">
-</script>
 
-<script>
-function initialize()
-{
-var mapProp = {
-  center:new google.maps.LatLng(51.508742,-0.120850),
-  zoom:5,
-  mapTypeId:google.maps.MapTypeId.ROADMAP
-  };
-var map=new google.maps.Map(document.getElementById("googleMap")
-  ,mapProp);
-}
+<div class='unit three-of-five'>
+	<div class='unit one-of-two'>
+		<p>You are currently viewing temperature data for <%= link_to "#{@capability.name}", page_path(@capability.id) %> for the following days:
+	<p/>
+	</div>
+	<div class='unit one-of-two'>
+	<% @docxml.xpath("//DV//Location//Period").each do |node| %>
+	    <h5><%= format_day(node['value']) %></h5>
+	<% end %>
+	</div>
+	<% @docxml.xpath("//DV//Location//Period").each do |node| %>
+	    <h3>Day: <%= format_day(node['value']) %></h3>
+			    <% node.xpath("//Rep").each do |r| %>
+		<table>
+			<thead>
+				<tr>
+					<th>Weather Type</th>
+					<th>Temperature</th>
+					<th>Wind Direction</th>
+					<th>Wind Speed</th>
+				</tr>
+			</thead>
+			<tbody>
+			    <tr>
+							<td><%= weather_type(r['W']) %></td>
+							<td><%= r['T'] %></td>
+							<td><%= r['D'] %></td>
+							<td><%= r['S'] %></td>
+						</tr>
+						<!-- <br /><br />  -->
+			    <% end %>
+			</tbody>
+		</table>
+	<% end %>
 
-google.maps.event.addDomListener(window, 'load', initialize);
-</script>
-<div id="googleMap" style="width:500px;height:380px;"></div>
-</p>
+
+</div>
+
+<div class='unit two-of-five'>
+     <div id="map_canvas"></div>
+    <input id="address" type="hidden" placeholder="Aberdeen">
+    <input type="hidden" value="Encode" onclick="codeAddress()">
+</div>
