@@ -24,6 +24,4 @@ doc/
 .DS_Store
 .idea
 .secret
-[merge "gemfilelock"]
-  name = relocks the gemfile.lock
-  driver = bundle install
+
